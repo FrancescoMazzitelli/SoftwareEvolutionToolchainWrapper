@@ -1,22 +1,21 @@
-import subprocess
-import git
-import time
+import git_ck
+import os
 
-repo_path = "C:/Users/panne/logging-log4j2"
-repo = git.Repo(repo_path)
+folder = "To_Analyze"
 
-git_commits = repo.iter_commits('--all')
-commits = []
-authors = []
+def check():
+    if os.path.exists(folder):
+        content = os.listdir(folder)
+        if content is not None:
+            return 0
+    else:
+        git_ck.clone_repo()
 
-for commit in git_commits:
-    if commit.author.name not in authors:
-        authors.append(commit.author.name)
-        commits.append(commit)
-
-for commit in commits:
-    #print("Committed by %s on %s with sha %s" % (commit.committer.name, time.strftime("%a, %d %b %Y %H:%M", time.localtime(commit.committed_date)), commit.hexsha))
-    repo.git.checkout(commit.hexsha)
-    subprocess.call(['java', '-jar', 'ck.jar', repo_path, 'false', '0', 'true', "output/{}".format(commit.author.name)])
-
-    
+if __name__ == '__main__':
+    try:
+        check()
+    except:
+        print("Warning")
+    repo = git_ck.repo_to_use()
+    git_commits = git_ck.get_commits(repo)
+    git_ck.year_ck_metrics(git_commits)
