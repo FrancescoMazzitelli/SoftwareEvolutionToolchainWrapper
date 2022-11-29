@@ -1,3 +1,4 @@
 {
-    "repo": "https://github.com/apache/logging-log4j2"
+    "repo": "https://github.com/apache/logging-log4j2",
+    "branch": "release-2.x"
 }

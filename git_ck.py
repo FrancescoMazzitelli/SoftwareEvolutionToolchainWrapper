@@ -2,17 +2,29 @@ import subprocess
 import git
 import time
 import json
+import os
 
 setting = open("settings.json")
 settings = json.load(setting)
 remote_repo = settings['repo']
+branch = settings['branch']
 
 local_repo_path = "To_Analyze"
+
+def config_git_bash():
+    #subprocess.Popen(['runas', '/noprofile', '/user:Administrator', 'CMD.exe'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    subprocess.call(['git', 'config', '--system', 'core.longpaths', 'true'])
 
 def clone_repo():
     #git.Repo.clone_from(remote_repo, 'To_Analyze')
     subprocess.call(['git', 'clone', remote_repo, local_repo_path])
-    subprocess.call(['git', 'checkout', 'main'])
+
+def checkout_repo():
+    subprocess.call(['git', 'checkout', 'release-2.x'])
+
+def print_current_branch(repo):
+    branch = repo.active_branch
+    print(branch)
 
 def repo_to_use():
     repo = git.Repo(local_repo_path)
@@ -52,13 +64,20 @@ def print_commits(commits):
         print("Committed by %s on %s with sha %s" % (commit.committer.name, time.strftime("%a, %d %b %Y %H:%M", time.localtime(commit.committed_date)), commit.hexsha))
 
 def author_ck_metrics(git_commits):
+    absolute_path = os.path.abspath('To_Analyze')
     filtered_commits = __filter_by_authors(git_commits)
     for commit in filtered_commits:
-        subprocess.call(['git', 'checkout', commit.hexsha])
+        subprocess.call(['git', 'checkout', commit.hexsha, absolute_path])
         subprocess.call(['java', '-jar', 'ck.jar', local_repo_path, 'false', '0', 'true', "output/{} ".format(commit.committer.name)])
 
 def year_ck_metrics(git_commits):
     filtered_commits = __filter_by_year(git_commits)
+    absolute_path = os.path.abspath('To_Analyze')
     for commit in filtered_commits:
-        subprocess.call(['git', 'checkout', commit.hexsha])
+        subprocess.call(['git', 'checkout', commit.hexsha, absolute_path])
         subprocess.call(['java', '-jar', 'ck.jar', local_repo_path, 'false', '0', 'true', "output/{} ".format(time.strftime("%Y", time.localtime(commit.committed_date)))])
+
+def delete_unnecessary(file_to_keep):
+    for filename in os.listdir("output"):
+        if not file_to_keep in filename:
+            os.remove("output/"+filename)
