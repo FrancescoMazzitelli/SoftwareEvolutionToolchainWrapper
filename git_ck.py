@@ -1,6 +1,6 @@
+from pydriller import Repository
 import subprocess
 import git
-import time
 import json
 import os
 
@@ -11,12 +11,7 @@ branch = settings['branch']
 
 local_repo_path = "To_Analyze"
 
-def config_git_bash():
-    #subprocess.Popen(['runas', '/noprofile', '/user:Administrator', 'CMD.exe'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    subprocess.call(['git', 'config', '--system', 'core.longpaths', 'true'])
-
 def clone_repo():
-    #git.Repo.clone_from(remote_repo, 'To_Analyze')
     subprocess.call(['git', 'clone', remote_repo, local_repo_path])
 
 def checkout_repo():
@@ -27,7 +22,7 @@ def print_current_branch(repo):
     print(branch)
 
 def repo_to_use():
-    repo = git.Repo(local_repo_path)
+    repo = Repository(local_repo_path)
     return repo 
 
 def get_repo_by_local_path(repo_path):
@@ -35,7 +30,7 @@ def get_repo_by_local_path(repo_path):
     return repo 
 
 def get_commits(repo):
-    git_commits = repo.iter_commits('--all')
+    git_commits = repo.traverse_commits()
     return git_commits
 
 def __filter_by_authors(git_commits):
@@ -53,7 +48,7 @@ def __filter_by_year(git_commits):
     years = []
 
     for commit in git_commits:
-        year = time.strftime("%Y", time.localtime(commit.committed_date))
+        year = commit.committer_date.year
         if year not in years:
             years.append(year)
             filtered_commits.append(commit)
@@ -61,21 +56,31 @@ def __filter_by_year(git_commits):
 
 def print_commits(commits):
     for commit in commits:
-        print("Committed by %s on %s with sha %s" % (commit.committer.name, time.strftime("%a, %d %b %Y %H:%M", time.localtime(commit.committed_date)), commit.hexsha))
+        print("Committed by %s on %s with sha %s" % (commit.committer.name, commit.committer_date, commit.hash))
 
 def author_ck_metrics(git_commits):
-    absolute_path = os.path.abspath('To_Analyze')
+    to_analyze = os.path.abspath('To_Analyze')
+    ck_tool = os.path.abspath('ck.jar')
     filtered_commits = __filter_by_authors(git_commits)
     for commit in filtered_commits:
-        subprocess.call(['git', 'checkout', commit.hexsha, absolute_path])
+        os.chdir(to_analyze)
+        subprocess.call(['git', 'checkout', commit.hash])
+        print("+------------------------------------------------------------------------CHECKOUT TERMINATO")
+        os.chdir(os.path.dirname(ck_tool))
         subprocess.call(['java', '-jar', 'ck.jar', local_repo_path, 'false', '0', 'true', "output/{} ".format(commit.committer.name)])
+        print("+------------------------------------------------------------------------CK-TOOL TERMINATO")
 
 def year_ck_metrics(git_commits):
+    to_analyze = os.path.abspath('To_Analyze')
+    ck_tool = os.path.abspath('ck.jar')
     filtered_commits = __filter_by_year(git_commits)
-    absolute_path = os.path.abspath('To_Analyze')
     for commit in filtered_commits:
-        subprocess.call(['git', 'checkout', commit.hexsha, absolute_path])
-        subprocess.call(['java', '-jar', 'ck.jar', local_repo_path, 'false', '0', 'true', "output/{} ".format(time.strftime("%Y", time.localtime(commit.committed_date)))])
+        os.chdir(to_analyze)
+        subprocess.call(['git', 'checkout', '-f', commit.hash])
+        print("+------------------------------------------------------------------------CHECKOUT TERMINATO")
+        os.chdir(os.path.dirname(ck_tool))
+        subprocess.call(['java', '-jar', 'ck.jar', local_repo_path, 'false', '0', 'true', "output/{} ".format(commit.committer_date.year)])
+        print("+------------------------------------------------------------------------CK-TOOL TERMINATO")
 
 def delete_unnecessary(file_to_keep):
     for filename in os.listdir("output"):
