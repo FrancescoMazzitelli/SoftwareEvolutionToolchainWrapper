@@ -1,6 +1,6 @@
-import git_ck
-import os
+import backend.git_ck as git_ck
 import analysis
+import os
 
 folder = "To_Analyze"
 

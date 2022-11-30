@@ -1,7 +1,7 @@
 import pandas as pd
 import glob
 
-path = r"C:/Users/donat/OneDrive/Desktop/Progetto-evoluzione-qualita-del-Software/output"
+path = "output"
 all_files = glob.glob(path + "/*.csv")
 
 def cbo_average():

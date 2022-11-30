@@ -1,23 +1,23 @@
-import backend
+import backend.metrics as metrics
 from prettytable import PrettyTable
 
 metrics_avg_table = PrettyTable([])
 
 def metrics_average():
-    cbo_avg = backend.cbo_average()
-    cbo_modified_avg = backend.cbo_modified_average()
-    fan_in_avg = backend.fan_in_average()
-    fan_out_avg = backend.fan_out_average()
-    dit_avg = backend.dit_average()
-    noc_avg = backend.noc_average()
-    loc_avg = backend.loc_average()
-    rfc_avg = backend.rfc_average()
-    tcc_avg = backend.tcc_average()
-    nosi_avg = backend.nosi_average()
-    lcom_avg = backend.lcom_star_average()
-    lcom_star_avg = backend.lcom_star_average() 
-    lcc_avg = backend.lcc_average()
-    wmc_avg = backend.wmc_average()
+    cbo_avg = metrics.cbo_average()
+    cbo_modified_avg = metrics.cbo_modified_average()
+    fan_in_avg = metrics.fan_in_average()
+    fan_out_avg = metrics.fan_out_average()
+    dit_avg = metrics.dit_average()
+    noc_avg = metrics.noc_average()
+    loc_avg = metrics.loc_average()
+    rfc_avg = metrics.rfc_average()
+    tcc_avg = metrics.tcc_average()
+    nosi_avg = metrics.nosi_average()
+    lcom_avg = metrics.lcom_star_average()
+    lcom_star_avg = metrics.lcom_star_average() 
+    lcc_avg = metrics.lcc_average()
+    wmc_avg = metrics.wmc_average()
 
     metrics_avg_table.add_column("cbo", cbo_avg)
     metrics_avg_table.add_column("cbo_modified", cbo_modified_avg)
