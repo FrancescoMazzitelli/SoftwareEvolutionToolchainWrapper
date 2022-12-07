@@ -1,0 +1,72 @@
+#!/bin/sh
+# FreeTXL Unix Uninstallation Script, June 2018
+# Copyright 2018 Queen's University at Kingston 
+
+echo ""
+echo "Removing TXL from your system."
+sleep 1
+
+# Default locations
+DEFAULT=true
+TXLBIN=/usr/local/bin
+TXLLIB=/usr/local/lib/txl
+TXLMAN=/usr/local/man/man1
+
+# Localization
+if [ -x /usr/bin/sed ] 
+then
+        SED=/usr/bin/sed
+else
+        SED=/bin/sed
+fi
+unset noclobber
+
+# Check what kind of installation we have here
+if [ "`whoami`" != "root" ] 
+then
+	echo ""
+	echo "Warning - you are not running as root, so you can uninstall TXL for yourself only."
+	echo "If you intend to uninstall a copy TXL installed for all users on this machine,"
+	echo "you will have to run this install script as root, for example using 'sudo ./UninstallTxl'."
+	echo ""
+	echo "Do you want to continue to uninstall TXL for yourself only? (y/n) :"
+	read YESNO
+	if [ "$YESNO" = "y" ] 
+	then
+		echo ""
+		echo "Uninstalling TXL for $USER only."
+		DEFAULT=false
+		TXLBIN=$HOME/bin
+		TXLLIB=$HOME/txl/lib
+		TXLMAN=$HOME/txl/man/man1
+	else
+		exit 99
+	fi
+fi
+
+sleep 1
+
+# Uninstall TXL commands
+echo ""
+echo "Uninstalling TXL commands from $TXLBIN"
+/bin/rm -f $TXLBIN/txl $TXLBIN/txldb $TXLBIN/txlp $TXLBIN/txlc 
+sleep 1
+
+# Uninstall TXL library
+echo ""
+echo "Uninstalling the TXL library $TXLLIB"
+/bin/rm -rf $TXLLIB
+sleep 1
+
+# Install TXL manual entries
+echo ""
+echo "Uninstalling TXL manual entries from $TXLMAN"
+/bin/rm -f $TXLMAN/txl.* $TXLMAN/txldb.* $TXLMAN/txlp.* -f $TXLMAN/txlc.*
+sleep 1
+
+echo ""
+echo "Done."
+echo ""
+
+# ---
+# Rev 12.6.18

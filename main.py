@@ -1,4 +1,6 @@
-import backend.git_ck as git_ck
+import backend.git_ck_wrapper as git_ck
+import backend.nicad_wrapper as nicad
+import backend.sonarqube_wrapper  as sonar
 import analysis
 import os
 
@@ -13,7 +15,7 @@ def check():
         git_ck.clone_repo()
 
 if __name__ == '__main__':
-    
+    """
     if not os.path.exists("output"):
         path = os.path.join("output")
         os.mkdir(path)
@@ -21,11 +23,14 @@ if __name__ == '__main__':
         check()
     except:
         print("Warning")
-
+    """
     #repo = git_ck.repo_to_use()
     #git_commits = git_ck.get_commits(repo)
     #git_ck.year_ck_metrics(git_commits)
     
     #git_ck.delete_unnecessary(file_to_keep="class")
 
-    analysis.metrics_average()
+    #analysis.metrics_average()
+
+    sonar.sonar()
+    
