@@ -1,51 +1,51 @@
-from subprocess import PIPE, STDOUT
-import subprocess
+from xml.dom import minidom
+from prettytable import PrettyTable
 import os
 
-absolute_nicad_dir = os.path.abspath('tools/nicad6')
-relative_nicad_dir = 'tools/nicad6'
-txl_dir = os.path.abspath('tools/txl_linux')
-to_analye = os.path.abspath('To_Analyze')
+table = PrettyTable([])
 
-def wsl_open():
-    os.system("wsl")
+classid = []
+nclones = []
+nlines = []
+similarity = []
+refs = []
 
-def wsl_exit():
-    os.system("exit")
+def check_input():
+    if not os.path.exists("nicad_input"):
+        path = os.path.join("nicad_input")
+        os.mkdir(path)
 
-def txl():
-    os.chdir(txl_dir)
-    #txl = subprocess.Popen('wsl ./InstallTxl', stdout = PIPE, stdin=PIPE, stderr = PIPE, encoding='ascii')
-    #output = txl.communicate('y')
-    #print(output)
-    os.system("wsl ./InstallTxl")
+def check_output():
+    if not os.path.exists("nicad_output"):
+        path = os.path.join("nicad_output")
+        os.mkdir(path)
 
-def txl_make():
-    os.chdir(txl_dir+"/bin")
-    txl = absolute_nicad_dir+"/txl"
-    #os.chdir(txl)
-    #subprocess.call(['wsl', './txl', 'make', txl])
-    #subprocess.call(['wsl', 'make'])
-    os.system("wsl ./txl make {}".format(txl))
+def filter_xml(f):
+    class_ = f.getElementsByTagName('class')
+    for n in class_:
+        tuple = []
+        for e in n.getElementsByTagName('source'):
+            tuple.append(e.attributes['file'].value)
+        refs.append(tuple)
+        classid.append(n.attributes['classid'].value)
+        nclones.append(n.attributes['nclones'].value)
+        nlines.append(n.attributes['nlines'].value)
+        similarity.append(n.attributes['similarity'].value)
 
-def type1_clones():
-    os.chdir(absolute_nicad_dir)
-    #os.system('wsl -e sh -c "./nicad6 functions java {} type1-report default-report"'.format(to_analye))
-    subprocess.call(['wsl', './nicad6', 'functions', 'java', to_analye, 'type1-report', 'default-report'])
-    #os.system('wsl -e sh -c "ls"')
-    #os.system("wsl ls")
-    #os.system("wsl chmod +rx nicad.sh")
-    #os.system("wsl ./nicad.sh")
+def create_table():
+    table.add_column('classid', classid)
+    table.add_column('nclones', nclones)
+    table.add_column('nlines', nlines)
+    table.add_column('similarity', similarity)
+    table.add_column('code_ref', refs)
 
-def type2_clones():
-    os.chdir(nicad_dir)
-    subprocess.call(['wsl', './nicad6','functions', 'java', to_analye, 'type2-report', 'default-report'])
+def save_to_csv():
+    with open('nicad_output/nicad.csv', 'w') as w:
+        w.write(table.get_csv_string())
 
-def type3_clones():
-    os.chdir(nicad_dir)
-    subprocess.call(['wsl', './nicad6','functions', 'java', to_analye, 'type3-2-report', 'default-report'])
-
-def generate_clones_metrics():
-    type1_clones()
-    type2_clones()
-    type3_clones()
+def xml_wrapper(xml_wrapped):
+    check_input()
+    check_output()
+    filter_xml(xml_wrapped)
+    create_table()
+    save_to_csv()

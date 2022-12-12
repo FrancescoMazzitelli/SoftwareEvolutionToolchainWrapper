@@ -39,7 +39,7 @@ def set_properties():
     prop.close()
 
 def move_project_to_analyze():
-    if not os.path.exists(target_folder):
+    if os.path.exists(target_folder) == False:
         shutil.copyfile(to_analyze, target_folder)
 
 def start_sonar_server():

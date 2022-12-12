@@ -60,7 +60,7 @@ def print_commits(commits):
 
 def author_ck_metrics(git_commits):
     to_analyze = os.path.abspath('To_Analyze')
-    ck_tool = os.path.abspath('tools\ck.jar')
+    ck_tool = os.path.abspath('ck.jar')
     filtered_commits = __filter_by_authors(git_commits)
     for commit in filtered_commits:
         os.chdir(to_analyze)
@@ -72,14 +72,14 @@ def author_ck_metrics(git_commits):
 
 def year_ck_metrics(git_commits):
     to_analyze = os.path.abspath('To_Analyze')
-    ck_tool = os.path.abspath('tools\ck.jar')
+    ck_tool = os.path.abspath('ck.jar')
     filtered_commits = __filter_by_year(git_commits)
     for commit in filtered_commits:
         os.chdir(to_analyze)
         subprocess.call(['git', 'checkout', '-f', commit.hash])
         print("+------------------------------------------------------------------------CHECKOUT TERMINATO")
         os.chdir(os.path.dirname(ck_tool))
-        subprocess.call(['java', '-jar', 'ck.jar', local_repo_path, 'false', '0', 'true', "output/{} ".format(commit.committer_date.year)])
+        subprocess.call(['java', '-jar', 'ck.jar', to_analyze, 'false', '0', 'true', "output/{} ".format(commit.committer_date.year)])
         print("+------------------------------------------------------------------------CK-TOOL TERMINATO")
 
 def delete_unnecessary(file_to_keep):
