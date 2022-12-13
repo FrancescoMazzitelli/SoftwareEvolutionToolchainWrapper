@@ -1,5 +1,6 @@
 import pandas as pd
 import glob
+import numpy as np
 
 path = "output"
 all_files = glob.glob(path + "/*.csv")
@@ -9,7 +10,7 @@ def cbo_average():
 
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["cbo"].mean()
+        average = np.nanmean(df["cbo"])
         li.append(average)
 
     return li
@@ -19,7 +20,7 @@ def cbo_modified_average():
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["cboModified"].mean()
+        average = np.nanmean(df["cboModified"])
         li.append(average)
 
     return li
@@ -29,27 +30,29 @@ def fan_in_average():
 
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["fanin"].mean()
+        average = np.nanmean(df["fanin"])
         li.append(average)
 
     return li
 
+'''
 def fan_out_average():
     li = []
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["fanout"].mean()
+        average = df["fanout"].nanmean()
         li.append(average)
 
     return li
+'''
 
 def dit_average():
     li = []
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["dit"].mean()
+        average = np.nanmean(df["dit"])
         li.append(average)
 
     return li
@@ -59,7 +62,7 @@ def noc_average():
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["noc"].mean()
+        average = np.nanmean(df["noc"])
         li.append(average)
 
     return li
@@ -69,7 +72,7 @@ def wmc_average():
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["wmc"].mean()
+        average = np.nanmean(df["wmc"])
         li.append(average)
 
     return li
@@ -79,7 +82,7 @@ def rfc_average():
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["rfc"].mean()
+        average = np.nanmean(df["rfc"])
         li.append(average)
 
     return li
@@ -89,7 +92,7 @@ def nosi_average():
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["nosi"].mean()
+        average = np.nanmean(df["nosi"])
         li.append(average)
 
     return li
@@ -99,7 +102,7 @@ def loc_average():
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["loc"].mean()
+        average = np.nanmean(df["loc"])
         li.append(average)
 
     return li
@@ -109,7 +112,7 @@ def lcom_average():
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["lcom"].mean()
+        average = np.nanmean(df["lcom"])
         li.append(average)
 
     return li
@@ -119,7 +122,7 @@ def lcom_star_average():
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["lcom*"].mean()
+        average = np.nanmean(df["lcom*"])
         li.append(average)
 
     return li
@@ -129,7 +132,7 @@ def tcc_average():
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["tcc"].mean()
+        average = np.nanmean(df["tcc"])
         li.append(average)
 
     return li
@@ -139,7 +142,7 @@ def lcc_average():
     
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
-        average = df["lcc"].mean()
+        average = np.nanmean(df["lcc"])
         li.append(average)
 
     return li
