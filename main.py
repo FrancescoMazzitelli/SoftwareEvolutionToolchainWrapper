@@ -31,12 +31,13 @@ def check_nicad_input():
 if __name__ == '__main__':
     
     #-----------------------------------------------INIIAL CHECK----------------//
+    ''' 
     try:
         check_repo()
         check_folder()
     except:
         print("Warning")
-    
+    '''
     #----------------------------------------------------CK---------------------//
     #repo = git_ck.repo_to_use()
     #git_commits = git_ck.get_commits(repo)
@@ -48,9 +49,10 @@ if __name__ == '__main__':
     #analysis.graph_plot()
     
     #---------------------------------------------------NICAD-------------------//
-    #for file in check_nicad_input():
-    #    xml = minidom.parse(file)
-    #    nicad.xml_wrapper(file, xml)
+    for file in check_nicad_input():
+        fileToSend = file.replace("nicad_input/", "")
+        xml = minidom.parse(file)
+        nicad.xml_wrapper(fileToSend, xml)
 
     #-------------------------------------------------SONARQUBE-----------------//
     #sonar.sonar()
