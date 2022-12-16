@@ -52,6 +52,7 @@ def graph_plot():
         x = range(0, len(y))
         plt.plot(x, y, label=column)
         
-    plt.legend(bbox_to_anchor=(1.25, 0.6), loc='center right')
+    plt.legend(bbox_to_anchor=(1.4, 0.6), loc='center right')
     plt.tight_layout()
+    plt.savefig("figures/andamento metriche nel tempo.png")
     plt.show()

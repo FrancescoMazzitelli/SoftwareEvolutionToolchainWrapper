@@ -39,13 +39,13 @@ def create_table():
     table.add_column('similarity', similarity)
     table.add_column('code_ref', refs)
 
-def save_to_csv():
-    with open('nicad_output/nicad.csv', 'w') as w:
+def save_to_csv(file):
+    with open('nicad_output/nicad-{}.csv'.format(file), 'w') as w:
         w.write(table.get_csv_string())
 
-def xml_wrapper(xml_wrapped):
+def xml_wrapper(file, xml_wrapped):
     check_input()
     check_output()
     filter_xml(xml_wrapped)
     create_table()
-    save_to_csv()
+    save_to_csv(file)
