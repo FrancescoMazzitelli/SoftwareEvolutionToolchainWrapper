@@ -1,7 +1,7 @@
 {
-    "repo": "https://github.com/jfree/fxgraphics2d",
-    "repo": "https://github.com/atlanmod/Commons",
-    "repo": "https://github.com/apache/dubbo-samples",
-    "repo": "https://github.com/square/retrofit",
-    "repo": "https://github.com/groovy/gmaven"
+    "repo1": "https://github.com/jfree/fxgraphics2d",
+    "repo2": "https://github.com/atlanmod/Commons",
+    "repo3": "https://github.com/apache/dubbo-samples",
+    "repo4": "https://github.com/square/retrofit",
+    "repo5": "https://github.com/groovy/gmaven"
 }
