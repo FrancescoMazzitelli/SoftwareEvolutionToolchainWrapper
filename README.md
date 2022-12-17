@@ -57,7 +57,7 @@ Non è stato possibile automatizzare l'esecuzione di nicad6, è quindi necessari
 - Installare nicad6, presente nella cartella "tools" tramite il comando "make". Verrà quindi avviata la procedura di compilazione dell'eseguibile tramite gcc e txl
 - Copiare il progetto da analizzare nella cartella "systems" di nicad
 - Avviare il prompt dei comandi dalla cartella "nicad6" e digitare il seguente somando:
-    - Tipo1: ./nicad6 functions java systems/To_Analyze type1-report deafault-report
-    - Tipo2: ./nicad6 functions java systems/To_Analyze type2-report deafault-report
-    - Tipo3: ./nicad6 functions java systems/To_Analyze type3-1-report deafault-report
+    - Tipo1: ./nicad6 functions java systems/To_Analyze type1-report default-report
+    - Tipo2: ./nicad6 functions java systems/To_Analyze type2-report default-report
+    - Tipo3: ./nicad6 functions java systems/To_Analyze type3-1-report default-report
 - Copiare i file "...clones-0.00-classes.xml" nella cartella "nicad_input". Se non è presente crearla manualmente nella root del progetto oppure avviare il nicad_wrapper dal main e farlo fallire per generare automaticamente la cartella
