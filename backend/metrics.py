@@ -44,7 +44,7 @@ def fan_out_average():
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0, sep=",")
         average = df["fanout"].mean()
-        average = df["fanout"].nanmean()
+        #average = df["fanout"].nanmean()
         li.append(average)
 
     return li
