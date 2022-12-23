@@ -1,6 +1,7 @@
 import backend.metrics as metrics
 from prettytable import PrettyTable
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
