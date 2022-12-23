@@ -6,6 +6,13 @@ path = "output"
 all_files = glob.glob(path + "/*.csv")
 
 def cbo_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica CBO per ogni commit
+    :return: lista di tutte le metriche CBO per commit
+    """
+    
     li = []
 
     for filename in all_files:
@@ -17,6 +24,13 @@ def cbo_average():
     return li
 
 def cbo_modified_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica CBO_MODIFIED per ogni commit
+    :return: lista di tutte le metriche CBO_MODIFIED per commit
+    """
+
     li = []
     
     for filename in all_files:
@@ -28,6 +42,13 @@ def cbo_modified_average():
     return li
     
 def fan_in_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica FAN-IN per ogni commit
+    :return: lista di tutte le metriche FAN-IN per commit
+    """
+
     li = []
 
     for filename in all_files:
@@ -39,6 +60,13 @@ def fan_in_average():
     return li
 
 def fan_out_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica FAN-OUT per ogni commit
+    :return: lista di tutte le metriche FAN-OUT per commit
+    """
+
     li = []
     
     for filename in all_files:
@@ -50,6 +78,13 @@ def fan_out_average():
     return li
 
 def dit_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica DIT per ogni commit
+    :return: lista di tutte le metriche DIT per commit
+    """
+
     li = []
     
     for filename in all_files:
@@ -61,6 +96,13 @@ def dit_average():
     return li
 
 def noc_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica NOC per ogni commit
+    :return: lista di tutte le metriche NOC per commit
+    """
+
     li = []
     
     for filename in all_files:
@@ -72,6 +114,13 @@ def noc_average():
     return li
 
 def wmc_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica WMC per ogni commit
+    :return: lista di tutte le metriche WMC per commit
+    """
+
     li = []
     
     for filename in all_files:
@@ -83,6 +132,13 @@ def wmc_average():
     return li
 
 def rfc_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica RFC per ogni commit
+    :return: lista di tutte le metriche RFC per commit
+    """
+
     li = []
     
     for filename in all_files:
@@ -94,6 +150,13 @@ def rfc_average():
     return li
 
 def nosi_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica NOSI per ogni commit
+    :return: lista di tutte le metriche NOSI per commit
+    """
+
     li = []
     
     for filename in all_files:
@@ -105,6 +168,13 @@ def nosi_average():
     return li
 
 def loc_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica LOC per ogni commit
+    :return: lista di tutte le metriche LOC per commit
+    """
+
     li = []
     
     for filename in all_files:
@@ -116,6 +186,13 @@ def loc_average():
     return li
 
 def lcom_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica LCOM per ogni commit
+    :return: lista di tutte le metriche LCOM per commit
+    """
+
     li = []
     
     for filename in all_files:
@@ -127,6 +204,14 @@ def lcom_average():
     return li
 
 def lcom_star_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica LCOM* per ogni commit
+    :return: lista di tutte le metriche LCOM* per commit
+    """
+
+
     li = []
     
     for filename in all_files:
@@ -138,6 +223,13 @@ def lcom_star_average():
     return li
 
 def tcc_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica TCC per ogni commit
+    :return: lista di tutte le metriche TCC per commit
+    """
+
     li = []
     
     for filename in all_files:
@@ -149,6 +241,13 @@ def tcc_average():
     return li
 
 def lcc_average():
+
+    """
+    Metodo che legge tutti i file csv e ritorna una lista
+    contenente la media della metrica LCC per ogni commit
+    :return: lista di tutte le metriche LCC per commit
+    """
+
     li = []
     
     for filename in all_files:
