@@ -3,6 +3,7 @@ import subprocess
 import git
 import json
 import os
+import pandas as pd
 
 setting = open("settings.json")
 settings = json.load(setting)
@@ -190,4 +191,9 @@ def delete_unnecessary(file_to_keep):
     """
     for filename in os.listdir("output"):
         if not file_to_keep in filename:
+            os.remove("output/"+filename)
+    
+    for filename in os.listdir("output"):
+        df = pd.read_csv("output/"+filename, sep=",")
+        if df.empty:
             os.remove("output/"+filename)

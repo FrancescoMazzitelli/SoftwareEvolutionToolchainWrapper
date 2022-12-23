@@ -4,6 +4,7 @@ import backend.sonarqube_wrapper  as sonar
 import analysis
 from xml.dom import minidom
 import os
+import pandas as pd
 
 folder = "To_Analyze"
 
@@ -58,7 +59,7 @@ if __name__ == '__main__':
     
     #-----------------------------------------------INIIAL CHECK----------------//
      
-    try:
+    '''try:
         check_repo()
         check_folder()
     except:
@@ -66,10 +67,10 @@ if __name__ == '__main__':
     
     #----------------------------------------------------CK---------------------//
 
-    git_ck.date_ck_metrics()
-    #git_ck.all_ck_metrics()
+    #git_ck.date_ck_metrics()
+    git_ck.all_ck_metrics()
     
-    git_ck.delete_unnecessary(file_to_keep="class")
+    git_ck.delete_unnecessary(file_to_keep="class")'''
 
     analysis.metrics_average()
 
@@ -77,10 +78,10 @@ if __name__ == '__main__':
     analysis.corr_matrix_plot()
     
     #---------------------------------------------------NICAD-------------------//
-    for file in check_nicad_input():
+    '''for file in check_nicad_input():
         fileToSend = file.replace("nicad_input/", "")
         xml = minidom.parse(file)
-        nicad.xml_wrapper(fileToSend, xml)
+        nicad.xml_wrapper(fileToSend, xml)'''
 
     #-------------------------------------------------SONARQUBE-----------------//
     sonar.sonar()
