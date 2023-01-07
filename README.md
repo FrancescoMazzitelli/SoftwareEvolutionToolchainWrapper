@@ -61,3 +61,9 @@ Non è stato possibile automatizzare l'esecuzione di nicad6, è quindi necessari
     - Tipo2: ./nicad6 functions java systems/To_Analyze type2-report default-report
     - Tipo3: ./nicad6 functions java systems/To_Analyze type3-1-report default-report
 - Copiare i file "...clones-0.00-classes.xml" nella cartella "nicad_input". Se non è presente crearla manualmente nella root del progetto oppure avviare il nicad_wrapper dal main e farlo fallire per generare automaticamente la cartella
+
+## Documentazione
+
+La documentazione relativa all'applicazione è consultabile sul seguente sito:
+
+[Link to documentation](http://softwareevolution.infinityfreeapp.com)
