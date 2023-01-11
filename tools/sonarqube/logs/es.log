@@ -466,3 +466,29 @@
 2022.12.07 14:47:43 INFO  es[][o.e.n.Node] started
 2022.12.07 14:47:43 INFO  es[][o.e.g.GatewayService] recovered [7] indices into cluster_state
 2022.12.07 14:47:52 INFO  es[][o.e.c.r.a.AllocationService] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[issues][2]]]).
+2023.01.04 12:40:43 INFO  es[][o.e.n.Node] version[7.17.5], pid[13680], build[unknown/unknown/8d61b4f7ddf931f219e3745f295ed2bbc50c8e84/2022-06-23T21:57:28.736740635Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/16.0.1/16.0.1+9-24]
+2023.01.04 12:40:43 INFO  es[][o.e.n.Node] JVM home [C:\Program Files\Java\jdk-16.0.1]
+2023.01.04 12:40:43 INFO  es[][o.e.n.Node] JVM arguments [-XX:+UseG1GC, -Djava.io.tmpdir=C:\Users\panne\SoftwareEvolutionToolchainWrapper\tools\sonarqube\temp, -XX:ErrorFile=../logs/es_hs_err_pid%p.log, -Des.networkaddress.cache.ttl=60, -Des.networkaddress.cache.negative.ttl=10, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djna.tmpdir=C:\Users\panne\SoftwareEvolutionToolchainWrapper\tools\sonarqube\temp, -XX:-OmitStackTraceInFastThrow, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dio.netty.allocator.numDirectArenas=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j2.formatMsgNoLookups=true, -Djava.locale.providers=COMPAT, -Dcom.redhat.fips=false, -Xmx512m, -Xms512m, -XX:MaxDirectMemorySize=256m, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=C:\Users\panne\SoftwareEvolutionToolchainWrapper\tools\sonarqube\elasticsearch, -Des.path.conf=C:\Users\panne\SoftwareEvolutionToolchainWrapper\tools\sonarqube\temp\conf\es]
+2023.01.04 12:40:44 INFO  es[][o.e.p.PluginsService] loaded module [analysis-common]
+2023.01.04 12:40:44 INFO  es[][o.e.p.PluginsService] loaded module [lang-painless]
+2023.01.04 12:40:44 INFO  es[][o.e.p.PluginsService] loaded module [parent-join]
+2023.01.04 12:40:44 INFO  es[][o.e.p.PluginsService] loaded module [reindex]
+2023.01.04 12:40:44 INFO  es[][o.e.p.PluginsService] loaded module [transport-netty4]
+2023.01.04 12:40:44 INFO  es[][o.e.p.PluginsService] no plugins loaded
+2023.01.04 12:40:44 INFO  es[][o.e.e.NodeEnvironment] using [1] data paths, mounts [[Acer (C:)]], net usable_space [141.8gb], net total_space [237.3gb], types [NTFS]
+2023.01.04 12:40:44 INFO  es[][o.e.e.NodeEnvironment] heap size [512mb], compressed ordinary object pointers [true]
+2023.01.04 12:40:44 INFO  es[][o.e.n.Node] node name [sonarqube], node ID [3sJXYf8bRJeGqZyPidYhIA], cluster name [sonarqube], roles [data_frozen, master, remote_cluster_client, data, data_content, data_hot, data_warm, data_cold, ingest]
+2023.01.04 12:40:53 INFO  es[][o.e.t.NettyAllocator] creating NettyAllocator with the following configs: [name=unpooled, suggested_max_allocation_size=256kb, factors={es.unsafe.use_unpooled_allocator=null, g1gc_enabled=true, g1gc_region_size=1mb, heap_size=512mb}]
+2023.01.04 12:40:53 INFO  es[][o.e.i.r.RecoverySettings] using rate limit [40mb] with [default=40mb, read=0b, write=0b, max=0b]
+2023.01.04 12:40:53 INFO  es[][o.e.d.DiscoveryModule] using discovery type [zen] and seed hosts providers [settings]
+2023.01.04 12:40:54 INFO  es[][o.e.g.DanglingIndicesState] gateway.auto_import_dangling_indices is disabled, dangling indices will not be automatically detected or imported and must be managed manually
+2023.01.04 12:40:55 INFO  es[][o.e.n.Node] initialized
+2023.01.04 12:40:55 INFO  es[][o.e.n.Node] starting ...
+2023.01.04 12:40:55 INFO  es[][o.e.t.TransportService] publish_address {127.0.0.1:51041}, bound_addresses {127.0.0.1:51041}
+2023.01.04 12:40:56 INFO  es[][o.e.c.c.Coordinator] cluster UUID [bYWoYnA0STOaL1Pps92slQ]
+2023.01.04 12:40:57 INFO  es[][o.e.c.s.MasterService] elected-as-master ([1] nodes joined)[{sonarqube}{3sJXYf8bRJeGqZyPidYhIA}{87JfLCoMQSiQwtZT2iKzuQ}{127.0.0.1}{127.0.0.1:51041}{cdfhimrsw} elect leader, _BECOME_MASTER_TASK_, _FINISH_ELECTION_], term: 20, version: 502, delta: master node changed {previous [], current [{sonarqube}{3sJXYf8bRJeGqZyPidYhIA}{87JfLCoMQSiQwtZT2iKzuQ}{127.0.0.1}{127.0.0.1:51041}{cdfhimrsw}]}
+2023.01.04 12:40:57 INFO  es[][o.e.c.s.ClusterApplierService] master node changed {previous [], current [{sonarqube}{3sJXYf8bRJeGqZyPidYhIA}{87JfLCoMQSiQwtZT2iKzuQ}{127.0.0.1}{127.0.0.1:51041}{cdfhimrsw}]}, term: 20, version: 502, reason: Publication{term=20, version=502}
+2023.01.04 12:40:57 INFO  es[][o.e.h.AbstractHttpServerTransport] publish_address {127.0.0.1:9001}, bound_addresses {127.0.0.1:9001}
+2023.01.04 12:40:57 INFO  es[][o.e.n.Node] started
+2023.01.04 12:40:57 INFO  es[][o.e.g.GatewayService] recovered [7] indices into cluster_state
+2023.01.04 12:41:01 INFO  es[][o.e.c.r.a.AllocationService] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[components][1], [metadatas][0]]]).

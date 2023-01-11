@@ -790,3 +790,20 @@ Caused by: java.lang.InterruptedException: null
 2022.12.07 15:06:04 INFO  ce[][c.z.h.HikariDataSource] HikariPool-1 - Shutdown initiated...
 2022.12.07 15:06:04 INFO  ce[][c.z.h.HikariDataSource] HikariPool-1 - Shutdown completed.
 2022.12.07 15:06:04 INFO  ce[][o.s.ce.app.CeServer] Compute Engine is stopped
+2023.01.04 12:41:29 INFO  ce[][o.s.p.ProcessEntryPoint] Starting Compute Engine
+2023.01.04 12:41:29 INFO  ce[][o.s.ce.app.CeServer] Compute Engine starting up...
+2023.01.04 12:41:30 INFO  ce[][o.sonar.db.Database] Create JDBC data source for jdbc:h2:tcp://127.0.0.1:9092/sonar;NON_KEYWORDS=VALUE
+2023.01.04 12:41:30 INFO  ce[][c.z.h.HikariDataSource] HikariPool-1 - Starting...
+2023.01.04 12:41:30 INFO  ce[][c.z.h.p.HikariPool] HikariPool-1 - Added connection conn0: url=jdbc:h2:tcp://127.0.0.1:9092/sonar user=
+2023.01.04 12:41:30 INFO  ce[][c.z.h.HikariDataSource] HikariPool-1 - Start completed.
+2023.01.04 12:41:30 WARN  ce[][o.s.db.dialect.H2] H2 database should be used for evaluation purpose only.
+2023.01.04 12:41:33 INFO  ce[][o.s.s.p.ServerFileSystemImpl] SonarQube home: C:\Users\panne\SoftwareEvolutionToolchainWrapper\tools\sonarqube
+2023.01.04 12:41:34 INFO  ce[][o.s.c.c.CePluginRepository] Load plugins
+2023.01.04 12:41:38 INFO  ce[][o.s.c.c.ComputeEngineContainerImpl] Running Community edition
+2023.01.04 12:41:38 INFO  ce[][o.s.ce.app.CeServer] Compute Engine is started
+2023.01.04 12:44:08 INFO  ce[][o.s.p.ProcessEntryPoint] Gracefully stopping process
+2023.01.04 12:44:08 INFO  ce[][o.s.ce.app.CeServer] Compute Engine is stopping...
+2023.01.04 12:44:08 INFO  ce[][o.s.c.t.CeProcessingSchedulerImpl] Gracefully stopping workers...
+2023.01.04 12:44:08 INFO  ce[][c.z.h.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2023.01.04 12:44:08 INFO  ce[][c.z.h.HikariDataSource] HikariPool-1 - Shutdown completed.
+2023.01.04 12:44:08 INFO  ce[][o.s.ce.app.CeServer] Compute Engine is stopped

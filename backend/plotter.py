@@ -1,39 +1,8 @@
-import backend.metrics as metrics
-from prettytable import PrettyTable
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-metrics_avg_table = PrettyTable([])
-table_from_file = PrettyTable([])
-li = ["cbo", "cboModified", "fanin", "dit", "noc", "loc", "rfc", "tcc", "nosi", "lcom", "lcom*", "lcc", "wmc"]
-
-
-def metrics_average():
-    """
-    Metodo che richiama quanto definito nel modulo "metrics" e
-    genera una tabella "PrettyTable". Dopo aver generato le
-    metriche per commit, e quindi la tabella, quest'ultima 
-    viene salvata sul file system in un file CSV
-    """
-    
-    for metric in li:
-        metrics_avg_table.add_column(metric, metrics.metric_average(metric))
-
-    with open('metrics_avg_table.csv', 'w') as w:
-        w.write(metrics_avg_table.get_csv_string())
-
-def read_table():
-    
-    """
-    Metodo che legge la tabella contente le metriche per commit
-    e la restituisice
-
-    :return: tabella metriche letta dal file system
-    """
-    
-    return pd.read_csv('metrics_avg_table.csv', sep=',')
+import backend.metrics_CSV_wrapper as metrics_CSV_wrapper
 
 
 def graph_plot():
@@ -43,14 +12,12 @@ def graph_plot():
     l'andamento delle metriche nel tempo, in relazione ai commit
     analizzati
     """
-    table = read_table()
-    for column in table:
-        if 'fanout' in column:
-            pass
-        else:
-            y = table[column]
-            x = range(0, len(y))
-            plt.plot(x, y, label=column)
+    df = metrics_CSV_wrapper.read_table()
+
+    for column in df:
+        y = df[column]
+        x = range(0, len(y))
+        plt.plot(x, y, label=column)
         
     plt.legend(bbox_to_anchor=(1.4, 0.6), loc='center right')
     plt.tight_layout()
@@ -63,26 +30,10 @@ def corr_matrix_plot():
     Metodo adibito al plot automatico delle matrici di correlazione
     che mostrano i rapporti di proporzionalità tra le metriche
     """
-    
-    df = read_table()
-    metrics = pd.DataFrame({
-    'CBO':df['cbo'],
-    'CBOM': df["cboModified"],
-    'FAN-I': df["fanin"],
-    'DIT': df["dit"],
-    'NOC': df["noc"],
-    'WMC': df["wmc"],
-    'RFC': df["rfc"],
-    'NOSI': df["nosi"],
-    'LOC': df["loc"],
-    'LCOM': df["lcom"],
-    'LCOM*': df["lcom*"],
-    'TCC': df["tcc"],
-    'LCC': df["lcc"]
-    })
 
+    df = metrics_CSV_wrapper.read_table()
 
-    corr_df = metrics.corr(method='pearson')
+    corr_df = df.corr(method='pearson')
 
     plt.figure(figsize=(8, 6))
     sns.heatmap(corr_df, annot=True, cmap="YlGnBu")
@@ -96,6 +47,8 @@ def pie_chart():
     torta per rappresentare i risultati della clone analysis
     """
 
+    df = metrics_CSV_wrapper.read_table()
+    
     df = pd.DataFrame({'Clones': [0, 2, 0]})
     labels = ['Type-1', 'Type-2', 'Type-3']
     plt.pie(df['Clones'], labels=None, autopct='%1.0f%%')

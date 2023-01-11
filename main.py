@@ -1,10 +1,10 @@
 import backend.git_ck_wrapper as git_ck
 import backend.nicad_wrapper as nicad
 import backend.sonarqube_wrapper  as sonar
-import analysis
+import backend.plotter as plotter
+import backend.metrics_CSV_wrapper as metrics_CSV_wrapper
 from xml.dom import minidom
 import os
-import pandas as pd
 
 folder = "To_Analyze"
 
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     
     #-----------------------------------------------INIIAL CHECK----------------//
      
-    '''try:
+    try:
         check_repo()
         check_folder()
     except:
@@ -70,24 +70,24 @@ if __name__ == '__main__':
     #git_ck.date_ck_metrics()
     git_ck.all_ck_metrics()
     
-    git_ck.delete_unnecessary(file_to_keep="class")'''
+    git_ck.delete_unnecessary(file_to_keep="class")
 
-    analysis.metrics_average()
+    metrics_CSV_wrapper.metrics_average()
 
-    analysis.graph_plot()
-    analysis.corr_matrix_plot()
+    plotter.graph_plot()
+    plotter.corr_matrix_plot()
     
     #---------------------------------------------------NICAD-------------------//
-    '''for file in check_nicad_input():
+    for file in check_nicad_input():
         fileToSend = file.replace("nicad_input/", "")
         xml = minidom.parse(file)
-        nicad.xml_wrapper(fileToSend, xml)'''
+        nicad.xml_wrapper(fileToSend, xml)
 
     #-------------------------------------------------SONARQUBE-----------------//
     sonar.sonar()
 
     #-------------------------------------------------PIE-CHART-----------------//
-    #analysis.pie_chart()
+    plotter.pie_chart()
 
     #-------------------------------------------------HISTOGRAM-----------------//
-    #analysis.bar_chart()
+    plotter.bar_chart()

@@ -55,24 +55,6 @@ def get_commits(repo):
 
     return repo.traverse_commits()
 
-def __filter_by_authors(git_commits):
-
-    """
-    Metodo che filtra i commit andandone a prendere uno per ogni autore
-    
-    :param git_commits: La lista di tutti i commit
-    :return: La lista dei commit ottenuti applicando il filtro
-    """
-
-    filtered_commits = []
-    authors = []
-    
-    for commit in git_commits:
-        if commit.committer.name not in authors:
-            authors.append(commit.committer.name)
-            filtered_commits.append(commit)
-    return filtered_commits
-
 def __filter_by_year(git_commits):
 
     """
@@ -167,7 +149,7 @@ def date_ck_metrics():
 
 def all_ck_metrics():
     """
-    Metodo che estrae le metriche ck dalla lista di tutti i commit le salva in un csv
+    Metodo che estrae le metriche ck dalla lista di tutti i commit e le salva in un csv
     
     :param git_commits: La lista di tutti i commit
     """

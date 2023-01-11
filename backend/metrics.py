@@ -9,8 +9,8 @@ def metric_average(metric):
 
     """
     Metodo che legge tutti i file csv e ritorna una lista
-    contenente la media della metrica CBO per ogni commit
-    :return: lista di tutte le metriche CBO per commit
+    contenente la media di tutte le metriche per ogni commit
+    :return: lista di tutte le metriche per commit
     """
     
     li = []
