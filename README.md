@@ -67,3 +67,15 @@ Non è stato possibile automatizzare l'esecuzione di nicad6, è quindi necessari
 La documentazione relativa all'applicazione è consultabile sul seguente sito:
 
 [Link to documentation](http://softwareevolution.infinityfreeapp.com)
+
+## Report
+
+Report di progetto
+
+[Link to report](https://issuu.com/ermanno8/docs/evoluzione_e_qualit_del_software)
+
+## Presentazione
+
+Presentazione del pprogetto
+
+[Link to presentation](https://1drv.ms/p/s!Ala06tk1O0saho5jsOURxSuTx-ljvA?e=lMdh6Y)
