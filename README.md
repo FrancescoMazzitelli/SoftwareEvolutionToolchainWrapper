@@ -76,6 +76,6 @@ Report di progetto
 
 ## Presentazione
 
-Presentazione del pprogetto
+Presentazione del progetto
 
 [Link to presentation](https://1drv.ms/p/s!Ala06tk1O0saho5jsOURxSuTx-ljvA?e=lMdh6Y)
