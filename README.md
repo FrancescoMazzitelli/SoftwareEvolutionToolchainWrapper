@@ -26,7 +26,7 @@ Per poter eseguire l'applicazione è necessario:
 - Scaricare e installare GIT, Java, Python
 - Impostare il percorso relativo  GIT e Java nel path per la definizione delle variabili d'ambiente
 - Scaricare ed installare WSL con una distro linux
-- Eseguire il comando pip -r requirements.txt che installerà tutte le librerie necessarie al funzionamento dell'applicazione
+- Eseguire il comando pip install -r requirements.txt che installerà tutte le librerie necessarie al funzionamento dell'applicazione
 - Eseguire come amministratore l'eseguibile "GIT bash" e inserire il seguente comando: git config --system core.longpaths true 
 - Inserire l'url relativo alla repository da analizzare nel file settings .json:
 <p align=center> { "repo": "https://github.com/insert/repository/here" } </p>
